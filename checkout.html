@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | Sweet Delights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>
+        :root {
+            --brand: #E67E22;
+            --dark: #3E2723;
+            --cream: #FFF8F0;
+            --line: #e9e9e9;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            background: var(--cream);
+            color: #222;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 32px auto;
+            padding: 0 16px;
+        }
+
+        h1 {
+            margin: 0 0 16px;
+            color: var(--dark);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 24px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .04);
+        }
+
+        .line {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--line);
+        }
+
+        .total {
+            font-weight: 800;
+            font-size: 18px;
+            text-align: right;
+            padding-top: 10px;
+        }
+
+        .muted {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .btn {
+            background: var(--brand);
+            color: #fff;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn.secondary {
+            background: #eee;
+            color: #333;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .radio {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .footer {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Checkout</h1>
+        <div class="grid">
+            <!-- Order summary -->
+            <div class="card">
+                <h3>Your Order</h3>
+                <div id="summary"></div>
+                <div class="total">Total: <span id="grand">0</span> Rs/-</div>
+                <p class="muted">Weights priced per kg (0.5 kg steps).</p>
+            </div>
+
+            <!-- Login + Payment -->
+            <div class="card">
+                <h3>Login</h3>
+                <form id="loginForm">
+                    <div class="row">
+                        <input id="name" type="text" placeholder="Full name" required>
+                    </div>
+                    <div class="row">
+                        <input id="email" type="email" placeholder="Email" required>
+                    </div>
+                    <div class="row">
+                        <input id="phone" type="tel" placeholder="Phone (10 digits)" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="row">
+                        <input id="password" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="footer">
+                        <button class="btn" type="submit">Login</button>
+                    </div>
+                </form>
+
+                <h3>Payment</h3>
+                <label class="radio"><input type="radio" name="pay" value="COD" checked> Cash on Delivery</label>
+                <label class="radio"><input type="radio" name="pay" value="RZP"> Online (Razorpay)</label>
+
+                <div class="footer">
+                    <button class="btn secondary" onclick="backToShop()">Back to Shop</button>
+                    <button class="btn" id="placeBtn" onclick="placeOrder()">Place Order</button>
+                </div>
+                <p class="muted" id="status"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const summaryDiv = document.getElementById("summary");
+        const grandEl = document.getElementById("grand");
+        const statusEl = document.getElementById("status");
+        const placeBtn = document.getElementById("placeBtn");
+
+        let cart = JSON.parse(localStorage.getItem("cartData") || "[]");
+        if (!cart.length) {
+            statusEl.textContent = "Your cart is empty. Redirecting to shop…";
+            setTimeout(() => backToShop(), 1000);
+        }
+
+        function money(n) { return Math.round(n); } // whole Rs
+
+        function renderSummary() {
+            summaryDiv.innerHTML = "";
+            let total = 0;
+            cart.forEach(item => {
+                const line = money(item.basePrice * item.weight);
+                total += line;
+                const row = document.createElement("div");
+                row.className = "line";
+                row.innerHTML = `<div>${item.title}<br><span class="muted">${item.weight} kg × ${item.basePrice} Rs/-</span></div>
+                     <strong>${line} Rs/-</strong>`;
+                summaryDiv.appendChild(row);
+            });
+            grandEl.textContent = money(total);
+        }
+        renderSummary();
+
+        // simple “session”
+        const savedUser = JSON.parse(localStorage.getItem("sd_user") || "null");
+        if (savedUser) {
+            document.getElementById("name").value = savedUser.name || "";
+            document.getElementById("email").value = savedUser.email || "";
+            document.getElementById("phone").value = savedUser.phone || "";
+        }
+
+        document.getElementById("loginForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const user = {
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                phone: document.getElementById("phone").value.trim()
+            };
+            localStorage.setItem("sd_user", JSON.stringify(user));
+            statusEl.textContent = "Logged in successfully.";
+        });
+
+        function backToShop() { window.location.href = "index.html"; }
+
+        function placeOrder() {
+            const method = document.querySelector('input[name="pay"]:checked').value;
+            const amount = parseInt(grandEl.textContent, 10);
+            if (!amount || amount <= 0) { alert("Your cart is empty."); return; }
+
+            const user = JSON.parse(localStorage.getItem("sd_user") || "null");
+            if (!user) { alert("Please log in first."); return; }
+
+            if (method === "COD") {
+                finishOrder({ payment: "COD", id: "COD-" + Date.now() });
+                return;
+            }
+
+            // Razorpay online payment (TEST)
+            const options = {
+                key: "rzp_test_xxxxxxxx", // <-- replace with your Razorpay Key ID
+                amount: amount * 100,     // in paise
+                currency: "INR",
+                name: "Sweet Delights",
+                description: "Cake order",
+                image: "cake.png", // optional
+                prefill: { name: user.name, email: user.email, contact: user.phone },
+                theme: { color: "#E67E22" },
+                handler: function (response) {
+                    // success callback
+                    finishOrder({ payment: "ONLINE", id: response.razorpay_payment_id });
+                }
+            };
+            const rzp = new Razorpay(options);
+            rzp.on("payment.failed", function (resp) {
+                alert("Payment failed: " + resp.error.description);
+            });
+            rzp.open();
+        }
+
+        function finishOrder(result) {
+            // In a real app, send details to your server here.
+            localStorage.removeItem("cartData");
+            alert("🎉 Order placed successfully!\nPayment: " + result.payment + "\nRef: " + result.id);
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+
+</html>
