@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Sweet Delights</title>
+
+    <style>
+        :root {
+            --primary: #903819cf;
+            --secondary: #933919e5;
+            --dark: #fefdfd;
+            --light: #b93509db;
+            --accent: #623005e2;
+            --text: #3a2e2b;
+            --paper: #fffaf7;
+            --border: #ecd9d2;
+            --shadow: 0 8px 28px rgba(0, 0, 0, .12);
+            --radius: 14px;
+            --transition: all .25s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background-image: url("bg2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            box-shadow: var(--shadow);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: 0.5s;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .75rem;
+            margin-top: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .logo img {
+            margin-right: 10px;
+            height: 50px
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-wrap: wrap
+        }
+
+        .back-menu {
+            position: relative;
+            display: inline-block;
+            color: white;
+            /* text color */
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+
+        /* underline effect */
+        .back-menu::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            /* thickness of line */
+            background: white;
+            /* line color */
+            transition: width 0.3s ease;
+        }
+
+        .back-menu:hover::after {
+            width: 100%;
+            /* line grows across text */
+        }
+
+
+        .btn {
+            appearance: none;
+            border: none;
+            cursor: pointer;
+            padding: .65rem .95rem;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, .06);
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: #fff
+        }
+
+        .btn.primary:hover {
+            transform: translateY(-1px)
+        }
+
+        .btn.ghost {
+            background: rgba(255, 255, 255, .2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, .35)
+        }
+
+        .btn.light {
+            background: #eee;
+            color: #333
+        }
+
+        .wrap {
+            width: auto;
+            height: auto;
+            max-width: 1100px;
+            margin: 9.5rem auto 2.5rem;
+            gap: 100px;
+        }
+
+        .card {
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.1rem 1.1rem;
+        }
+
+        .card h2 {
+            margin-bottom: .6rem;
+            color: #442d27
+        }
+
+        .muted {
+            color: var(--dark);
+        }
+
+        .full {
+            color: white;
+        }
+
+        .auth-title {
+            color: var(--dark);
+        }
+
+        input::placeholder {
+            color: #eee;
+        }
+
+        .card-auth-box h2 {
+            margin: .2rem 0 .6rem;
+            color: #fbfaf9
+        }
+
+        .card-auth-box {
+            background: transparent;
+        }
+
+        .auth-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .7rem
+        }
+
+        .auth-grid .full {
+            grid-column: 1/-1
+        }
+
+        .label {
+            font-size: .9rem;
+            color: white;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: .7rem .8rem;
+            margin-top: .3rem;
+            color: #eee;
+            border: 1px solid var(--paper);
+            border-radius: 10px;
+            background: transparent;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(144, 56, 25, .08)
+        }
+
+        .auth-actions {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            flex-wrap: wrap;
+            margin-top: .5rem;
+        }
+
+        .auth-switch {
+            font-size: 1rem;
+            color: white;
+        }
+
+        .auth-switch button {
+            background: none;
+            border: none;
+            color: var(--dark);
+            cursor: pointer;
+            font-weight: 800
+        }
+
+        .card h2 {
+            color: #eee;
+        }
+
+        .address-box::placeholder {
+            color: #eee;
+        }
+
+        .message-box::placeholder {
+            color: #eee;
+        }
+
+        .summary-list {
+            display: grid;
+            gap: .6rem;
+            margin-top: .4rem;
+            color: #eee;
+        }
+
+        .summary-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: .5rem;
+            border: 1px dashed #eadfdc;
+            border-radius: 10px;
+            padding: .6rem .7rem;
+            background: transparent;
+            color: #eee;
+        }
+
+        .line-right {
+            font-weight: 800
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 900;
+            margin-top: .6rem;
+            padding-top: .6rem;
+            border-top: 1px solid #efe6e4
+        }
+
+        .payment-options {
+            display: grid;
+            gap: .55rem;
+            margin-top: .35rem;
+            color: white;
+        }
+
+        .pay-row {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            border: 1px solid #efe6e4;
+            border-radius: 10px;
+            padding: .6rem .7rem;
+            background: transparent;
+        }
+
+        .notice {
+            background: #fff6ed;
+            border: 1px solid #ffe2c6;
+            color: #6b3910;
+            border-radius: 12px;
+            padding: .75rem .9rem;
+            font-size: .95rem;
+            margin-top: .7rem
+        }
+
+        .hidden {
+            display: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="cake.png" alt="Sweet Delights cake logo" />
+                    Sweet Delights - Checkout
+                </div>
+                <div class="top-actions">
+                    <span id="welcome-user" class="muted" style="color:#fff;"></span>
+                    <a href="index.html" class="back-menu">Back to Menu</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <!-- Auth Box -->
+        <section class="card-auth-box" id="auth-card">
+            <h2 id="auth-title">Account</h2>
+            <p class="muted"><b>Login or Sign up create an account to complete your order.</b></p><br>
+
+            <div class="auth-inner">
+                <form id="auth-form">
+                    <div class="auth-grid">
+                        <div class="full">
+                            <label><b>Username</b>
+                                <input type="text" id="username" placeholder="Enter username" required /><br>
+                            </label>
+                        </div>
+                        <div class="full">
+                            <label><b>Password</b>
+                                <input type="password" id="password" placeholder="Enter password" required /><br>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="auth-actions">
+                        <button type="submit" class="btn primary" id="auth-submit">Login</button>
+                        <button type="button" class="btn light" id="logout-btn" onclick="logout()"
+                            style="display:grid; background-color: #6b3910; color:#eee;">Logout</button>
+                        <div class="auth-switch">
+                            <span id="auth-mode-text"><br>Don’t have an account?<br></span>
+                            <button type="button" id="auth-toggle">Sign up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Checkout Wrapper (hidden before login) -->
+        <section id="checkout-wrapper" class="hidden">
+            <div class="card">
+                <h2>Delivery Info</h2>
+                <div class="auth-grid">
+                    <div class="full">
+                        <label>Full Name
+                            <input type="text" id="full-name" placeholder="Enter your name" required />
+                        </label>
+                    </div>
+                    <div class="full">
+                        <label>Phone Number
+                            <input type="tel" id="phone" placeholder="Enter phone" required />
+                        </label>
+                    </div>
+                    <div class="full">
+                        <label>Address
+                            <!-- FIXED: added id="address" -->
+                            <textarea id="address" class="address-box" placeholder="Street, area" rows="2"
+                                required></textarea>
+                        </label>
+                    </div>
+                    <div class="full">
+                        <label>City
+                            <input type="text" id="city" placeholder="City" required />
+                        </label>
+                    </div>
+                    <div class="full">
+                        <label>Pincode
+                            <input type="text" id="pincode" placeholder="Pincode" required />
+                        </label>
+                    </div>
+                    <div class="full">
+                        <label>Note / Message (Optional)
+                            <textarea class="message-box" placeholder="note Any special note?" rows="2"></textarea>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div style="height:.8rem"></div>
+
+            <div class="card">
+                <h2>Your Order</h2>
+                <div id="summary-box" class="summary-list"></div>
+                <div class="summary-total" style="color:#eee">
+                    <span>Total</span><span id="summary-total">0 Rs/-</span>
+                </div>
+                <div id="empty-cart" class="notice" style="display:none;">Your cart is empty.</div>
+            </div>
+
+            <div style="height:.8rem"></div>
+
+            <div class="card">
+                <h2>Payment</h2>
+                <div class="payment-options">
+                    <label class="pay-row"><input type="radio" name="payment" value="online"> Online Payment</label>
+                    <label class="pay-row"><input type="radio" name="payment" value="offline"> Cash on Delivery
+                        (COD)</label>
+                </div>
+                <button id="pay-btn" class="btn primary" style="width:100%;margin-top:.8rem;">Confirm & Pay</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const CART_KEY = "cartData";
+        const USERS_KEY = "users";
+        let cart = [], users = {}, currentUser = null, authMode = "login";
+
+        const $ = (sel) => document.querySelector(sel);
+        const money = (n) => Math.round(Number(n) || 0);
+
+        function loadState() {
+            try { cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]"); } catch { cart = []; }
+            try { users = JSON.parse(localStorage.getItem(USERS_KEY) || "{}"); } catch { users = {}; }
+            currentUser = null;
+            updateWelcome();
+            hideCheckout();
+        }
+        function saveUsers() { localStorage.setItem(USERS_KEY, JSON.stringify(users)); }
+
+        function showCheckout() {
+            $("#auth-card").classList.add("hidden");
+            $("#checkout-wrapper").classList.remove("hidden");
+            renderSummary();
+        }
+        function hideCheckout() {
+            $("#auth-card").classList.remove("hidden");
+            $("#checkout-wrapper").classList.add("hidden");
+        }
+        function updateWelcome() { $("#welcome-user").textContent = currentUser ? `Hi, ${currentUser}!` : ""; }
+
+        function renderSummary() {
+            const wrap = $("#summary-box"), totalEl = $("#summary-total"), empty = $("#empty-cart"), payBtn = $("#pay-btn");
+            wrap.innerHTML = "";
+            if (!cart.length) { empty.style.display = "block"; totalEl.textContent = "0 Rs/-"; if (payBtn) payBtn.disabled = true; return; }
+            empty.style.display = "none"; if (payBtn) payBtn.disabled = false;
+            let total = 0;
+            cart.forEach(item => {
+                const lineTotal = money(item.basePrice) * Number(item.weight || 1);
+                total += lineTotal;
+                const row = document.createElement("div");
+                row.className = "summary-item";
+                row.innerHTML = `<div><div style="font-weight:800">${item.title}</div><div class="muted">Weight: ${item.weight} kg</div></div><div class="line-right">${lineTotal} Rs/-</div>`;
+                wrap.appendChild(row);
+            });
+            totalEl.textContent = `${total} Rs/-`;
+        }
+
+        function applyAuthMode() {
+            if (authMode === "login") { $("#auth-submit").textContent = "Login"; $("#auth-title").textContent = "Login"; $("#auth-mode-text").textContent = "Don’t have an account?"; $("#auth-toggle").textContent = "Sign up"; }
+            else { $("#auth-submit").textContent = "Sign Up"; $("#auth-title").textContent = "Sign Up"; $("#auth-mode-text").textContent = "Already have an account?"; $("#auth-toggle").textContent = "Login"; }
+        }
+        function toggleAuthMode() { authMode = authMode === "login" ? "signup" : "login"; applyAuthMode(); }
+
+        function selectedPayment() { const sel = document.querySelector('input[name="payment"]:checked'); return sel ? sel.value : null; }
+
+        function confirmAndPay() {
+            if (!currentUser) { alert("Please login."); return; }
+            if (!cart.length) { alert("Cart empty."); return; }
+            if (!selectedPayment()) { alert("Choose payment."); return; }
+
+            const fullName = $("#full-name").value.trim(),
+                phone = $("#phone").value.trim(),
+                addr = $("#address").value.trim(),
+                city = $("#city").value.trim(),
+                pin = $("#pincode").value.trim();
+
+            if (!fullName || !phone || !addr || !city || !pin) { alert("Please fill all required delivery fields."); return; }
+
+            const payment = selectedPayment();
+            if (payment === "online") {
+                alert("✅ Order confirmed with Online Payment!\n\nDelivery for: " + fullName + ", " + phone + ", " + addr + ", " + city + "-" + pin);
+            } else {
+                alert("✅ Order confirmed with Cash on Delivery!\n\nDelivery for: " + fullName + ", " + phone + ", " + addr + ", " + city + "-" + pin);
+            }
+
+            cart = []; localStorage.removeItem(CART_KEY); renderSummary();
+            setTimeout(() => window.location.href = "index.html", 1000);
+        }
+        function logout() { currentUser = null; updateWelcome(); hideCheckout(); $("#logout-btn").style.display = "none"; alert("Logged out."); }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadState(); applyAuthMode();
+            $("#auth-toggle").addEventListener("click", toggleAuthMode);
+            $("#auth-form").addEventListener("submit", e => {
+                e.preventDefault(); const u = $("#username").value.trim(), p = $("#password").value;
+                if (!u || !p) { alert("Enter username & password."); return; }
+                if (authMode === "signup") { if (users[u]) { alert("User exists."); authMode = "login"; applyAuthMode(); return; } users[u] = p; saveUsers(); alert("Signup done. Please login."); authMode = "login"; applyAuthMode(); return; }
+                if (!users[u] || users[u] !== p) { alert("Invalid credentials."); return; }
+                currentUser = u; updateWelcome(); $("#logout-btn").style.display = "inline-block"; showCheckout(); alert("Login successful!");
+            });
+            $("#pay-btn").addEventListener("click", confirmAndPay);
+        });
+    </script>
+</body>
+
+</html>

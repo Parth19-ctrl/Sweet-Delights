@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sweet Delights - Premium Cake Shop</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="container">
+
+            <nav>
+
+                <div class="logo">
+
+                    <img src="cake.png" alt="Sweet Delights cake logo" />
+
+                    Sweet Delights
+
+                </div>
+
+                <ul class="nav-links">
+
+                    <li><a href="#home">Home</a></li>
+
+                    <li><a href="#menu">Menu</a></li>
+
+                    <li><a href="#about">About</a></li>
+
+                    <li><a href="#contact">Contact</a></li>
+
+                </ul>
+
+                <div class="cart-icon" onclick="toggleCart()">
+                    🛒 <span id="cart-count">0</span>
+                </div>
+
+
+                <div class="cart-popup" id="cart-popup">
+                    <h3>Your Cart</h3>
+                    <div id="cart-items"></div>
+                    <div class="cart-total">Total: <span id="cart-total">0</span> Rs/-</div>
+                    <div class="cart-actions">
+                        <button class="order-now" onclick="goToCheckout()">Order Now</button>
+                        <button class="close-btn" onclick="toggleCart()">Close</button>
+                    </div>
+                </div>
+
+
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Artisan Cakes for Every Occasion</h1>
+
+            <p>Handcrafted with premium ingredients and baked with love</p>
+
+            <a href="#menu" class="btn">Explore Our Menu</a>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="menu">
+
+        <div class="container">
+
+            <h3 class="section-title">Our Cake Selection</h3>
+
+
+
+            <div class="categories">
+
+                <button class="category-btn active" onclick="filterSelection('all')">All</button>
+
+                <button class="category-btn" onclick="filterSelection('premium')">Premium</button>
+
+                <button class="category-btn" onclick="filterSelection('standard')">Standard</button>
+
+                <button class="category-btn" onclick="filterSelection('nuts')">With Nuts</button>
+
+                <button class="category-btn" onclick="filterSelection('nut-free')">Nut-Free</button>
+
+                <button class="category-btn" onclick="filterSelection('chocolate')">Chocolate</button>
+
+                <button class="category-btn" onclick="filterSelection('fruit')">Fruit</button>
+
+                <button class="category-btn" onclick="filterSelection('tea')">Tea</button>
+
+                <button class="category-btn" onclick="filterSelection('biscuit')">Biscuit</button>
+
+            </div>
+
+
+
+            <div class="menu-grid">
+
+                <div class="menu-item filter premium chocolate nuts">
+
+                    <div class="menu-item-img">
+
+                        <img src="1719002806item_Ultimate_Ferrero.jpg" alt="Cake1" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Ultimate Ferrero Cake</h3>
+
+                        <p class="menu-item-desc">Hazelnut gianduja Belgian chocolate mousse layered with a rich
+                            chocolate brownie and a light hazelnut genoise finished with a crunchy hazelnut cookie base
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1425 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Premium</span>
+
+                            <span class="tag">Chocolate</span>
+
+                            <span class="tag">Nuts</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="menu-item filter standard chocolate nut-free">
+
+                    <div class="menu-item-img">
+
+                        <img src="1744790230item_Blueberry_Cheesecake_best_premium_cake_bengaluru_birthday.jpg"
+                            alt="Cake2" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Blueberry Cheese Cake</h3>
+
+                        <p class="menu-item-desc">A light cold-set cheesecake layered with blueberry compote on a base
+                            of buttery and crunchy shortbread biscuit topped vanilla whipped cream and grated lemon zest
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1325 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Fruit</span>
+
+                            <span class="tag">Nut-Free</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="menu-item filter premium fruit nut-free">
+
+                    <div class="menu-item-img">
+
+                        <img src="1745329155item_Fruit_Forager_Cake_best_birthday_cake_bengaluru.jpg" alt="Cake3" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Fruit Forager Cake</h3>
+
+                        <p class="menu-item-desc">Delicate and airy vanilla sponge layered with white chocolate diplomat
+                            cream and a mix of fresh pineapple, strawberry, sour cherries and peaches.</p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1275 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Premium</span>
+
+                            <span class="tag">Fruit</span>
+
+                            <span class="tag">Nut-Free</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="menu-item filter standard nuts">
+
+                    <div class="menu-item-img">
+
+                        <img src="1745038471item_Cashew_Malai_Cake_EGGLESS_Best_Birthday_cake.jpg" alt="Cake4" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Cashew Malai Cake</h3>
+
+                        <p class="menu-item-desc">Soft and moist milk cake layered with roasted cashew nut ganache,
+                            topped with a silky smooth malai creme and whole roasted cashew nuts</p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1325 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Premium</span>
+
+                            <span class="tag">Nuts</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter standard chocolate">
+
+                    <div class="menu-item-img">
+
+                        <img src="1653561329item_Vegan_Dark_Chocolate_cake..jpg" alt="Cake5" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Vegan Dark Chocolate Cake</h3>
+
+                        <p class="menu-item-desc">Moist and rich Cocoa Sponge layered with a special Oatmilk Chocolate
+                            Ganache and crunchy chocolate crumble. The perfect Vegan indulgence, fit for all palates.
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1375 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Premium</span>
+
+                            <span class="tag">Chocolate</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter standard fruit">
+
+                    <div class="menu-item-img">
+
+                        <img src="1644042030item_Nutella_and_Strawberry_Entremet.jpg" alt="Cake6" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Nutella & Strawberry Cake</h3>
+
+                        <p class="menu-item-desc">Hazelnut gianduja and Nutella mousse, layered with fresh strawberry
+                            panna cotta, a buttermilk vanilla cake and a crunchy Nutella praline base.
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1395 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Fruit</span>
+
+                            <span class="tag">Nuts</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter standard tea">
+
+                    <div class="menu-item-img">
+
+                        <img src="1623312003item_WhatsApp_Image_2021-06-07_at_3.35.38_PM.jpg" alt="Cake7" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Match-Tea Ramisu Cake</h3>
+
+                        <p class="menu-item-desc">Light savoiardi sponge soaked with green Japanese Matcha tea layered
+                            with a light mascarpone mousse
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1350 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Premium</span>
+
+                            <span class="tag">Tea</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter premium chocolate">
+
+                    <div class="menu-item-img">
+
+                        <img src="1623149455item_WhatsApp_Image_2021-06-08_at_4.20.28_PM.jpg" alt="Cake8" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Entremet Cake</h3>
+
+                        <p class="menu-item-desc">Dark chocolate brownie layered with peppermint cremeux, Belgian dark
+                            chocolate mousse and almond dacquoise, inspired by the iconic After eight chocolate.
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1350 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Premium</span>
+
+                            <span class="tag">Chocolate</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter standard biscuit">
+
+                    <div class="menu-item-img">
+
+                        <img src="1622439528item_WhatsApp_Image_2021-05-31_at_09.21.55.jpg" alt="Cake9" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Oreo Milkshake Cake</h3>
+
+                        <p class="menu-item-desc">Chocolate cake soaked in oreo milkshake layered with belgian milk
+                            chocolate ganache and topped with a chunky oreo whipped cream
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1275 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Biscuit</span>
+
+                            <span class="tag">Chocolate</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter standard biscuit">
+
+                    <div class="menu-item-img">
+
+                        <img src="1746358626item_Lotus_Biscoff_Cheesecake_best_cake_bangalore.jpg" alt="Cake10" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Lotus Biscoff Cheese Cake</h3>
+
+                        <p class="menu-item-desc">Creamy Lotus Biscoff spread combined with cream cheese and set over a
+                            base of buttered lotus biscuits topped with a gooey caramel and biscoff fudge. The perfect
+                            balance between sweetness and a touch of salt.
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1395 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Biscuit</span>
+
+                            <span class="tag">Chocolate</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter premium fruit">
+
+                    <div class="menu-item-img">
+
+                        <img src="1745217124item_Tres_Leches_best_cake_bangalore.jpg" alt="Cake11" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Tresleches & seasonal berries Cake</h3>
+
+                        <p class="menu-item-desc">A classic Mexican speciality - Vanilla Chiffon cake soaked with Tres
+                            Leches syrup (Spanish for three forms of milk) layered and finished with Creme Chantilly and
+                            fresh seasonal berries
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1300 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Premuim</span>
+
+                            <span class="tag">Fruit</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter premium nuts">
+
+                    <div class="menu-item-img">
+
+                        <img src="1635578888item_Lamara-8286-Edit.jpg" alt="Cake12" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Pistachio & Almond Cake</h3>
+
+                        <p class="menu-item-desc">Almond cake soaked in milk, layered with a roasted pistachio ganache
+                            finished with sliced roasted almonds and rose petals. Inspired by the legendery Indian
+                            dessert Rasmalai.
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1275 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Premuim</span>
+
+                            <span class="tag">Nuts</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter premium nuts">
+
+                    <div class="menu-item-img">
+
+                        <img src="1699356177item_Saffron,_Rabdi_and_Dry_Fruit_Cake_(EGGLESS).jpg" alt="Cake13" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Saffron,Rabadi & Dry Fruit Cake</h3>
+
+                        <p class="menu-item-desc">Vanilla cake soaked with fresh saffron infused milk, layered and
+                            topped with a velvety Rabdi ganache and finished with roasted pistachios and rose petals
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1395 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Standard</span>
+
+                            <span class="tag">Premuim</span>
+
+                            <span class="tag">Nuts</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter premium nuts">
+
+                    <div class="menu-item-img">
+
+                        <img src="1734679254item_Lamara_Winter_Wonderland_BEST.jpg" alt="Cake14" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Winter Wonderland Cake</h3>
+
+                        <p class="menu-item-desc">Modern French style entremet made with a luscious Belgian dark
+                            chocolate mousse, layered with a strawberry & blueberry cremeux, a soft almond cake & milk
+                            chocolate crunch.
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1375 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Nuts</span>
+
+                            <span class="tag">Premuim</span>
+
+                            <span class="tag">Fruit</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter premium biscuit">
+
+                    <div class="menu-item-img">
+
+                        <img src="1744874172item_Millionaire_Cake_best_birthday_cake_bangalore.jpg" alt="Cake15" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Milllionaire Cake</h3>
+
+                        <p class="menu-item-desc">Luscious Belgian milk chocolate mousse layered with lightly salted
+                            caramel whipped cream, brown butter cake and a crunchy shortbread biscuit base.
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1425 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Chocolate</span>
+
+                            <span class="tag">Premuim</span>
+
+                            <span class="tag">Biscuit</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter premium chocolate">
+
+                    <div class="menu-item-img">
+
+                        <img src="1622453710item_WhatsApp_Image_2021-05-31_at_9.19.43_AM_(2).jpg" alt="Cake16" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Raspberry & Dark Chocolate Cake</h3>
+
+                        <p class="menu-item-desc">60% dark chocolate mousse, white chocolate cremeux, fresh raspberry
+                            compote and a sour cream & almond sponge. A cake for the more adventurous palate
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1425 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Chocolate</span>
+
+                            <span class="tag">Premuim</span>
+
+                            <span class="tag">Fruit</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter premium nuts">
+
+                    <div class="menu-item-img">
+
+                        <img src="1624758086item_WhatsApp_Image_2021-05-29_at_7.32.58_PM.jpg" alt="Cake17" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Hazlenut Chcolate Truffle Cake</h3>
+
+                        <p class="menu-item-desc">Dutch chocolate sponge layered with a light hazelnut gianduja whipped
+                            ganache and crunchy chocolate and hazelnut crumble topped with a Belgian dark chocolate
+                            ganache and studded with roasted hazelnuts
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1375 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Chocolate</span>
+
+                            <span class="tag">Premuim</span>
+
+                            <span class="tag">Nuts</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+                <div class="menu-item filter premium fruit">
+
+                    <div class="menu-item-img">
+
+                        <img src="1622304428item_WhatsApp_Image_2021-05-29_at_7.33.00_PM_(1).jpg" alt="Cake18" />
+
+                    </div>
+
+                    <div class="menu-item-info">
+
+                        <h3 class="menu-item-title">Strawberry Red Velvet Cake</h3>
+
+                        <p class="menu-item-desc">Red velvet cake layered with fresh strawberry compote and a crunchy
+                            brown sugar crumble topped with Madagascar Vanilla whipped ganache and fresh strawberries
+
+                        </p>
+
+                        <div class="menu-item-details">
+
+                            <span>8-inch round</span>
+
+                            <span class="menu-item-price">1275 Rs/-</span>
+
+                        </div>
+
+                        <div class="tags">
+
+                            <span class="tag">Fruit</span>
+
+                            <span class="tag">Premuim</span>
+
+                            <span class="tag">Standard</span>
+
+                        </div>
+
+                        <button class="add-to-cart">Add to Cart</button>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="about">
+
+        <div class="container">
+
+            <h3 class="section-title">Our Story</h3>
+
+            <div style=" color: rgb(250, 248, 248); max-width: 800px; margin: 0 auto; text-align: center;">
+
+                <img src="https://d3bo0mk5kk7egf.cloudfront.net/imgstore/ElementGalleryItems/dining/Fullsize/The-Cake-Bake-Shop-by-Gwendolyn-Rogers_Full_57853.jpg"
+                    alt="Interior of Sweet Delights bakery showing cake displays and baking area"
+                    style="width: 100%; border-radius: 10px; margin-bottom: 2rem;" />
+
+                <p>Founded in 2010, Sweet Delights began as a small neighborhood bakery with a passion for crafting
+                    exceptional cakes. Our founder, a pastry chef trained in Paris, wanted to bring European baking
+                    techniques with a local twist to our community.</p>
+
+                <p>Today, we still adhere to those original principles: using only the finest ingredients, making
+                    everything from scratch daily, and infusing each creation with care and attention to detail. Whether
+                    it's a celebration cake or a simple afternoon treat, we believe every bite should be memorable.</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <footer id="contact">
+
+        <div class="footer-content">
+
+            <div class="footer-logo">Sweet Delights</div>
+
+            <p>123 Baker Street, Sweetville<br>
+
+                Open Daily 8AM-6PM</p>
+
+            <p>Phone: (555) 123-4567<br>
+
+                Email: hello@sweetdelights.com</p>
+
+
+            <div class="social-icons">
+                <a href="http://instgram.com" target="_blank" class="icon instagram">
+                    <img src="instagram.png" alt="instagram">
+                </a>
+                <a href="http://facebook.com" target="_blank" class="icon facebook">
+                    <img src="facebook.png" alt="facebook">
+                </a>
+                <a href="http://twitter.com" target="_blank" class="icon twitter">
+                    <img src="twitter.png" alt="twitter">
+                </a>
+            </div>
+
+            <p class="copyright">© 2023 Sweet Delights. All rights reserved.</p>
+
+        </div>
+
+    </footer>
+
+    <script>
+
+
+        let cart = JSON.parse(localStorage.getItem("cartData") || "[]");
+
+        function syncCart() {
+            localStorage.setItem("cartData", JSON.stringify(cart));
+        }
+
+        function money(n) { return Math.round(n); } // whole Rs
+
+        // attach to all “Add to Cart” buttons
+        document.querySelectorAll(".add-to-cart").forEach((btn) => {
+            btn.addEventListener("click", function () {
+                const itemEl = this.closest(".menu-item");
+                const title = itemEl.querySelector(".menu-item-title").innerText.trim();
+                const priceText = itemEl.querySelector(".menu-item-price").innerText;
+                const basePrice = parseFloat(priceText.replace("Rs/-", "").trim()); // per 1 kg
+
+                const found = cart.find(i => i.title === title);
+                if (found) {
+                    found.weight = +(found.weight + 0.5).toFixed(1);
+                } else {
+                    // start from 0.5 kg
+                    cart.push({ title, basePrice, weight: 0.5 });
+                }
+
+                // visual feedback on the button
+                this.innerHTML = "✅ Added";
+                this.disabled = true;
+                setTimeout(() => { this.innerHTML = "Add to Cart"; this.disabled = false; }, 900);
+
+                updateCartUI();
+            });
+        });
+
+        function updateCartUI() {
+            // count = number of distinct items
+            document.getElementById("cart-count").innerText = cart.length;
+
+            const wrap = document.getElementById("cart-items");
+            wrap.innerHTML = "";
+            cart.forEach((item, idx) => {
+                const lineTotal = money(item.basePrice * item.weight);
+                wrap.innerHTML += `
+      <div class="cart-item">
+        <div class="ci-left">
+          <div class="ci-title">${item.title}</div>
+          <div class="ci-weight">
+            <button class="qty" onclick="changeWeight(${idx},-0.5)">−</button>
+            <span>${item.weight} kg</span>
+            <button class="qty" onclick="changeWeight(${idx},+0.5)">+</button>
+          </div>
+        </div>
+        <div class="ci-right">${lineTotal} Rs/-</div>
+      </div>`;
+            });
+
+            const total = money(cart.reduce((s, i) => s + i.basePrice * i.weight, 0));
+            document.getElementById("cart-total").innerText = total;
+
+            syncCart();
+        }
+
+        // change weight or remove
+        function changeWeight(index, delta) {
+            cart[index].weight = +(cart[index].weight + delta).toFixed(1);
+            if (cart[index].weight < 0.5) cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            document.getElementById("cart-popup").classList.toggle("show");
+        }
+
+        function goToCheckout() {
+            // ensure cart saved, then go
+            syncCart();
+            window.location.href = "checkout.html";
+        }
+
+        // init on load (in case there was a saved cart)
+        updateCartUI();
+
+
+        // Category filtering
+
+        function filterSelection(category) {
+
+            const items = document.getElementsByClassName('menu-item');
+
+            const buttons = document.getElementsByClassName('category-btn');
+
+
+
+            // Update active button
+
+            for (let i = 0; i < buttons.length; i++) {
+
+                buttons[i].classList.remove('active');
+
+                if (buttons[i].textContent.toLowerCase() === category ||
+
+                    (category === 'all' && buttons[i].textContent.toLowerCase() === 'all')) {
+
+                    buttons[i].classList.add('active');
+
+                }
+
+            }
+
+
+
+            // Show/hide items
+
+            if (category === 'all') {
+
+                for (let i = 0; i < items.length; i++) {
+
+                    items[i].classList.remove('hide');
+
+                }
+
+            } else {
+
+                for (let i = 0; i < items.length; i++) {
+
+                    if (items[i].classList.contains(category)) {
+
+                        items[i].classList.remove('hide');
+
+                    } else {
+
+                        items[i].classList.add('hide');
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+        function equalizeCardHeights() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => card.style.height = 'auto'); // reset first
+
+            let rowTops = {};
+            cards.forEach(card => {
+                const top = card.getBoundingClientRect().top;
+                if (!rowTops[top]) rowTops[top] = [];
+                rowTops[top].push(card);
+            });
+
+            Object.values(rowTops).forEach(rowCards => {
+                const maxHeight = Math.max(...rowCards.map(c => c.offsetHeight));
+                rowCards.forEach(c => c.style.height = maxHeight + 'px');
+            });
+        }
+
+        window.addEventListener('load', equalizeCardHeights);
+        window.addEventListener('resize', equalizeCardHeights)
+
+        function addToCart(itemName, price) {
+            const cartItemsContainer = document.querySelector('.cart-items');
+
+            const item = document.createElement('div');
+            item.classList.add('cart-item');
+            item.innerHTML = `<strong>${itemName}</strong> - ₹${price}`;
+
+            cartItemsContainer.appendChild(item);
+        }
+
+    </script>
+
+
+</body>
+
+</html>
